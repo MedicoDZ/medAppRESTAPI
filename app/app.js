@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import db from './models/index.js'
 import medecinRouter from './routes/medecin.route'
 import patientRouter from './routes/patient.route'
+import specialiteRouter from './routes/specialite.route'
 
 
 dotenv.config()
@@ -24,11 +25,14 @@ db.sequelize.sync();
 app.use('/api/medecins', medecinRouter);
 
 //patient route
-app.use('/api/patients', patientRouter)
+app.use('/api/patients', patientRouter);
+
+//specialite route
+app.use('/api/specialites', specialiteRouter);
 
 //Home
 app.use((req, res) => {
-    res.send("<h1>DAWINI REST API</h1>");
+    res.send("<h1>MEDICODZ REST API</h1>");
 
 });
 
