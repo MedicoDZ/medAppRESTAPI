@@ -38,6 +38,9 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.FLOAT,
             allowNull: false
         },
+        noteMedecin:{
+            type: Sequelize.FLOAT
+        }
     }, {
         freezeTableName: true,
         tableName: 'medecin',
