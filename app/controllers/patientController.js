@@ -15,7 +15,6 @@ const findAllPatient = (req, res) => {
         });
 };
 
-
 export default {
     findAllPatient
 };

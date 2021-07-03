@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import db from './models/index.js'
 import medecinRouter from './routes/medecin.route'
 import patientRouter from './routes/patient.route'
+import authRouter from './routes/auth.route'
 
 
 dotenv.config()
@@ -26,9 +27,12 @@ app.use('/api/medecins', medecinRouter);
 //patient route
 app.use('/api/patients', patientRouter)
 
+//auth route
+app.use('/api/auth', authRouter);
+
 //Home
 app.use((req, res) => {
-    res.send("<h1>DAWINI REST API</h1>");
+    res.send("<h1>Medico-dz REST API</h1>");
 
 });
 
