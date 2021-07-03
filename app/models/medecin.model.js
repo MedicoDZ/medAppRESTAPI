@@ -6,7 +6,7 @@ module.exports = function (sequelize, Sequelize) {
             autoIncrement: true
         },
         telephoneMedecin: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         },
         passwordMedecin: {
@@ -27,9 +27,8 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.STRING,
             allowNull: false
         },
-        specialiteMedecin: {
-            type: Sequelize.STRING,
-            allowNull: false
+        idSpecialite: {
+            type: Sequelize.INTEGER
         },
         cabinetMedecinLongitude: {
             type: Sequelize.FLOAT,
@@ -55,6 +54,9 @@ module.exports = function (sequelize, Sequelize) {
         });
         Medecin.hasMany(modals.Traitement, {
             foreignKey: 'idMedecin',
+        });
+        Medecin.hasOne(models.Specialite, {
+            foreignKey: 'idSpecialite',
         });
     };
 

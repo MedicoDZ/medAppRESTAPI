@@ -6,7 +6,7 @@ module.exports = function (sequelize, Sequelize) {
             autoIncrement: true
         },
         telephonePatient: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         },
         passwordPatient: {
@@ -25,6 +25,10 @@ module.exports = function (sequelize, Sequelize) {
         },
         prenomPatient: {
             type: Sequelize.STRING,
+            allowNull: false
+        },
+        wilayaPatient:{
+            type:Sequelize.STRING,
             allowNull: false
         },
     }, {

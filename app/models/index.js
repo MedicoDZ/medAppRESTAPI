@@ -15,7 +15,8 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
         min: dbConfig.pool.min,
         acquire: dbConfig.pool.acquire,
         idle: dbConfig.pool.idle
-    }
+    },
+    sync: true
 });
 
 const db = {};
@@ -33,6 +34,12 @@ try {
 
 db.medecin = require("./medecin.model")(sequelize, Sequelize);
 db.patient = require("./patient.model")(sequelize, Sequelize);
+db.specialite = require("./specialite.model")(sequelize, Sequelize);
+db.conseil = require("./conseil.model")(sequelize, Sequelize);
+db.medicament = require("./medicament.model")(sequelize, Sequelize);
+db.rendezVous = require("./rendezVous.model")(sequelize, Sequelize);
+db.traitement = require("./traitement.model")(sequelize, Sequelize);
+db.traitMed = require("./traitMed.model")(sequelize, Sequelize);
 
 
 module.exports = db;

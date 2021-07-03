@@ -6,6 +6,7 @@ import db from './models/index.js'
 import medecinRouter from './routes/medecin.route'
 import patientRouter from './routes/patient.route'
 import authRouter from './routes/auth.route'
+import specialiteRouter from './routes/specialite.route'
 
 
 dotenv.config()
@@ -25,7 +26,10 @@ db.sequelize.sync();
 app.use('/api/medecins', medecinRouter);
 
 //patient route
-app.use('/api/patients', patientRouter)
+app.use('/api/patients', patientRouter);
+
+//specialite route
+app.use('/api/specialites', specialiteRouter);
 
 //auth route
 app.use('/api/auth', authRouter);
