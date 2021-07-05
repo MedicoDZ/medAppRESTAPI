@@ -24,6 +24,7 @@ const authPatient = async (req, res) => {
                 success: true,
                 id: patientO.idPatient,
                 msg: 'Patient est authentifié.',
+                nomPatient: patientO.nomPatient+' '+patientO.prenomPatient
               });
             } else {
               res.status(401).send({
