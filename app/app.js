@@ -6,6 +6,7 @@ import db from './models/index.js'
 import medecinRouter from './routes/medecin.route'
 import patientRouter from './routes/patient.route'
 import authRouter from './routes/auth.route'
+import rdvRouter from './routes/rdv.route'
 import specialiteRouter from './routes/specialite.route'
 
 
@@ -33,6 +34,9 @@ app.use('/api/specialites', specialiteRouter);
 
 //auth route
 app.use('/api/auth', authRouter);
+
+//auth route
+app.use('/api/rdv', rdvRouter);
 
 //Home
 app.use((req, res) => {

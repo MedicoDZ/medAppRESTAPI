@@ -40,6 +40,9 @@ module.exports = function (sequelize, Sequelize) {
         },
         noteMedecin:{
             type: Sequelize.FLOAT
+        },
+        prixVisite:{
+            type: Sequelize.INTEGER
         }
     }, {
         freezeTableName: true,

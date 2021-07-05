@@ -26,14 +26,14 @@ const authPatient = async (req, res) => {
                 msg: 'Patient est authentifié.',
               });
             } else {
-              res.status(404).send({
+              res.status(401).send({
                 success: false,
                 id: -1,
                 msg: 'mot de passe érroné.',
               });
             }
           } else {
-            res.status(404).send({
+            res.status(401).send({
                 success: false,
                 id: -1,
                 msg: 'Compte n\'existe pas !',
