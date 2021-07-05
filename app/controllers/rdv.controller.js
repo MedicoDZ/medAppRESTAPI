@@ -1,5 +1,8 @@
 const db = require("../models");
 const Rdv = db.rendezVous;
+const Patient = db.patient;
+const Medecin = db.medecin;
+const Specialite = db.specialite;
 const Op = db.Sequelize.Op;
 
 const demande = async (req, res) => {
@@ -54,9 +57,58 @@ const demande = async (req, res) => {
           res.status(500).send({
             message: err.message || "Some error occured while searching Rdv "
           });
-        }  
-};
+        }
+      };  
+       
+ const getAll = async (req, res) => {
+  const id = req.params.id;
+  try{
+  const data = await Rdv.findAll(
+      {
+          where: { idPatient: id }
+      }
+     )
+      let dataToSend = []
+      if (data != null && data.length != 0) {
+       for(const element of data) {
+        let p = await Patient.findOne({ where: {
+          idPatient : element.idPatient
+        }})
+        let m = await Medecin.findOne({ where: {
+          idMedecin : element.idMedecin
+        }})
+        let s = await Specialite.findOne({ where: {
+          idSpecialite : m.idSpecialite
+        }})
+        let str =  String(require('moment')(element.dateRdv).format('YYYY-MM-DD'))
+        let el = {
+          nomMedecin : m.nomMedecin +" "+ m.prenomMedecin,
+          nomPatient : p.nomPatient +" "+ p.prenomPatient,
+          specMedecin : s.nomSpecialite,
+          heure : element.heureRdv,
+          date : str,//.substring(str.length - 12, str.length),
+          prix : "2000"
+        };
+        dataToSend.push(el)
+      }
+      res.status(200).send(dataToSend)
+      return;
+      }  
+      else {
+  
+        res.status(404).send(dataToSend)
+        return;
+      }
+    }
+    catch (err) {
+      res.status(500).send({
+        message: err.message || "Some error occured while searching Rdv "
+      });
+    }
+  };  
+
 
 export default {
-  demande
+  demande,
+  getAll
   }
