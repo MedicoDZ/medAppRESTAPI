@@ -3,7 +3,7 @@ const Medicament = db.medicament;
 const TraitMed = db.traitMed;
 
 //Les médicaments d'un traitement
-/*const findMedicamentTraitement = (req, res) => {
+const findMedicamenstTraitement = async (req, res) => {
     const id = req.params.id;
     try{
         const data = await TraitMed.findAll({
@@ -18,26 +18,34 @@ const TraitMed = db.traitMed;
                 status: 404,
             });
         } else {
-            data.array.forEach(element => {
-                const dataF = await Medicament.findAll({
-                    where: {
-                        idMedicament: +
-                    },
-                });
-
-            });
+            res.send(data)
         }
      }
      catch(err){
         res.status(500).send({
-          message: "Error retrieving Patient with id=" + id
+          message: "Error retrieving medicaments of traitement with id=" + id
         });
       };
 }
 
+//medicament by id
+const findOneMedicament = (req, res) => {
+    const id = req.params.id;
+
+    Medicament.findByPk(id)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error retrieving medicament with id=" + id
+        });
+      });
+};
+
 
 
 export default {
-    findAllTraitements,
-    findTraitementsPatient
-};*/
+    findMedicamenstTraitement,
+    findOneMedicament
+};

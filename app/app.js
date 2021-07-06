@@ -48,7 +48,7 @@ app.use('/api/conseil', conseilRouter);
 app.use('/api/traitements', traitementRouter);
 
 //medicaments route
-//app.use('/api/medicaments', medicamentRouter);
+app.use('/api/medicaments', medicamentRouter);
 
 //Home
 app.use((req, res) => {
