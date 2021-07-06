@@ -1,7 +1,7 @@
 const db = require("../models");
 const Patient = db.patient;
 
-// Retrieve all medecins from the database.
+// Retrieve all patients from the database.
 const findAllPatient = (req, res) => {
     Patient.findAll()
         .then(data => {
@@ -15,6 +15,22 @@ const findAllPatient = (req, res) => {
         });
 };
 
+// Just one patient
+const findOnePatient = (req, res) => {
+    const id = req.params.id;
+
+    Patient.findByPk(id)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error retrieving patient with id=" + id
+        });
+      });
+};
+
 export default {
-    findAllPatient
+    findAllPatient,
+    findOnePatient
 };
