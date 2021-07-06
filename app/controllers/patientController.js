@@ -30,6 +30,7 @@ const findOnePatient = (req, res) => {
       });
 };
 
+
 export default {
     findAllPatient,
     findOnePatient

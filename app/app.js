@@ -9,6 +9,8 @@ import authRouter from './routes/auth.route'
 import rdvRouter from './routes/rdv.route'
 import conseilRouter from './routes/conseil.route'
 import specialiteRouter from './routes/specialite.route'
+import traitementRouter from './routes/traitement.route'
+import medicamentRouter from './routes/medicament.route'
 
 
 dotenv.config()
@@ -41,6 +43,12 @@ app.use('/api/rdv', rdvRouter);
 
 //conseil route
 app.use('/api/conseil', conseilRouter);
+
+//traitements route
+app.use('/api/traitements', traitementRouter);
+
+//medicaments route
+//app.use('/api/medicaments', medicamentRouter);
 
 //Home
 app.use((req, res) => {
