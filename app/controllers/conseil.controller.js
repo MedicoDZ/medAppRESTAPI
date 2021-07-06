@@ -64,8 +64,42 @@ const demande = async (req, res) => {
     }
   };  
 
+  const multipledemande = async (req, res) => {
+  
 
+  try{
+
+    for(e in req.body){
+
+        const conseilToAdd = {
+            demandePatient: e.demandePatient,
+            idMedecin : e.idMedecin,
+            idPatient : e.idPatient
+          };
+        
+          Conseil.create(conseilToAdd)
+            .then()
+            .catch(err => {
+              res.status(404).send({
+                  success:false,
+                  msg: err.message || "Some error occurred while creating the conseil."
+              });
+            });
+        }
+        res.status(200).send({
+            success:true,
+            msg:"toutes les demandes sont enregistrés"
+        })
+              
+        } catch (err) {
+          res.status(500).send({
+            message: err.message || "Some error occured while searching conseil "
+          });
+        }
+      };  
+       
 export default {
   demande,
-  getAll
+  getAll,
+  multipledemande
   }

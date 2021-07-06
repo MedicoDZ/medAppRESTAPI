@@ -5,6 +5,9 @@ var router = require("express").Router();
 // demande rdv
 router.post("/demande", conseilCtrl.demande);
 
+
+router.post("/multipledemande", conseilCtrl.multipledemande);
+
 // get les conseils d'un patient
 router.get("/patient/:id", conseilCtrl.getAll);
 
